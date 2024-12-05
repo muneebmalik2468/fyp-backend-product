@@ -62,7 +62,7 @@ app.post('/addproduct', verifyToken, async (request, response) => {
 
 // -------------------------------------------------------------
 
-app.post("/removeprod", verifyToken, async (request, response) => {
+app.post("/removeprod", async (request, response) => {
     await Product.findOneAndDelete({ id: request.body.id });
     console.log("removed");
     response.json({
