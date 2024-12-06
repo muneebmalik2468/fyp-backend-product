@@ -28,14 +28,16 @@ app.use('/images', express.static('upload/images'))
 app.post("/upload", upload.single('product'), (request, response) => {
     response.json({
         success: 1,
-        image_url: `http://localhost:${port}/images/${request.file.filename}`
+        image_url: `https://fyp-backend-product.onrender.com/images/${request.file.filename}`
     })
 });
 
 
+// this is the url of storing image string url in localhost
+// image_url: `http://localhost:${port}/images/${request.file.filename}`
 // --------------------------------------------------------------------
 
-app.post('/addproduct', verifyToken, async (request, response) => {
+app.post('/addproduct', async (request, response) => {
     let products = await Product.find({})
     let id;
     if (products.length > 0) {
